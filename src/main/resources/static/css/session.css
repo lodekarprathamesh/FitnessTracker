@@ -1,0 +1,17 @@
+#add-workout-box{
+    background-color: transparent;
+    width: 35%;
+    height: auto;
+    line-height: 45px;
+    position: absolute;
+    top: 20%;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: transparent !important; /* Removes background change */
+    color: white !important; /* Keeps text white */
+}
+
+
+

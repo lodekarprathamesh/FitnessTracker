@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Auth Page</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/toggleSlider.css}">
+    <script th:src="@{/js/toggle.js}"></script>
+</head>
+
+<body>
+<div class="form-container">
+
+    <h1 id="logo-name">Fitness Tracker</h1>
+<!--    <div class="image-side">-->
+<!--        <div class="image-overlay"></div>-->
+<!--    </div>-->
+
+
+<!--    <div class="auth-side">-->
+
+        <div class="auth-side-container">
+            <h2 id="formTitle">Login</h2>
+
+            <div id = "login-box">
+                <!-- Login Form -->
+                <form id="loginForm" th:action="@{/login/save}" method="post">
+                    <label>Username</label><br>
+                    <input type="text" name="username" required><br><br>
+
+                    <label>Password</label><br>
+                    <input type="password" name="password" required><br><br>
+
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <div id = "register-box" class="hidden">
+                <!-- Registration Form -->
+                <form id="registerForm" th:action="@{/register/save}" method="post" th:object="${user}" >
+                    <label>Username</label><br>
+                    <input type="text" th:field="*{username}"  required/><br><br>
+
+                    <label>Password</label><br>
+                    <input id="password" type="password" th:field="*{password}"  required/><br><br>
+
+                    <label>Confirm Password</label><br>
+                    <input id="confirmPassword" type="password" name="confirmPassword" required><br><br>
+
+                    <button type="submit" onclick="checkPassword()">Submit</button>
+
+                </form>
+
+            </div>
+            <!-- Toggle Button -->
+            <label class="switch">
+                <input type="checkbox" id="toggleSwitch" onchange="toggleForm()">
+                <span class="slider"></span>
+                <span class="switch-label" id="switchLabel">Register</span>
+            </label>
+
+<!--            <button type="button" onclick="toggleForm()">Switch to Register</button>-->
+
+        </div>
+    </div>
+<!--</div>-->
+
+</body>
+</html>
+

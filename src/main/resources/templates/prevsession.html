@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Previous Session</title>
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" href="../css/session.css">
+</head>
+<body>
+    <div th:replace="~{fragment::navbar}"></div>
+
+    <div class="container mt-5 text-light">
+        <h2>Sessions</h2><hr>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+<!--            <div th:each="entry : ${groupedSessions}" class="card text-light bg-dark mb-3 mt-4" style="max-width: 20rem;">-->
+<!--                <div th:text="${#temporals.format(entry.key, 'EEEE, dd MMM yyyy')}" th:class="card-header" >Date</div>-->
+<!--                <div th:each="workout : ${entry.value}" class="card-body">-->
+<!--                    <h5 th:text="${workout.sessionName}" class="card-title">Light card title</h5>-->
+<!--                    <p th:text="${workout.duration}">Duration</p>-->
+
+<!--                </div>-->
+<!--            </div>-->
+
+            <div th:each="workout : ${allSessions}" class="col">
+                <div  class="workoutCard card text-light  mb-3 mt-4  h-100 px-3 py-1 border rounded border-dark" style="max-width: 20rem;background-color: rgb(25, 9 ,16, 0.7);">
+                    <div th:text="${#temporals.format(workout.getStartTime().toLocalDate(), 'EEEE, dd MMM yyyy')}" th:class="card-header" >Date</div>
+                    <div  class="card-body">
+                        <h5 th:text="${workout.sessionName}" class="card-title">Light card title</h5>
+                        <p th:text="${workout.duration}">Duration</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="../js/animation.js"></script>
+</body>
+</html>
+
+
+

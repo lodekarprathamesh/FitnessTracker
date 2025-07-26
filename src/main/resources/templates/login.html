@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1 id="logo-name">Fitness Tracker</h1>
+    <div class="image-side">
+        <div class="image-overlay"></div>
+    </div>
+    <div class="login-side">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form th:action="@{/login/save}" method="post">
+                <label>Username</label>
+                <input type="text" name="username">
+
+                <label>Password</label>
+                <input type="password" name="password">
+
+                <button type="submit">Login</button>
+            </form>
+            <a th:href="@{/register}">Don't have an account? Register here</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>login</title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/login.css}">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h2>Login</h2>-->
+<!--    <form th:action="@{/login/save}" method="post">-->
+<!--        <label>Username</label>-->
+<!--        <input type="text" name="username" >-->
+
+<!--        <label>Password</label>-->
+<!--        <input type="password" name="password" >-->
+
+<!--        <button type="submit">Login</button>-->
+<!--    </form>-->
+
+<!--    <div th:if="${errorMessage}" style="color:red;">-->
+<!--        <p th:text="${errorMessage}"></p>-->
+<!--    </div>-->
+
+<!--    <div th:if="${logoutMessage}" style="color:green;">-->
+<!--        <p th:text="${logoutMessage}"></p>-->
+<!--    </div>-->
+
+
+<!--    <a th:href="@{/register}">Don't have an account? Register here</a>-->
+<!--</body>-->
+<!--</html>-->
