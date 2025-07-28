@@ -14,4 +14,49 @@
 }
 
 
+/* Blur everything inside body */
+body.blurred > *:not(#popup) {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+}
+
+body.blurred {
+    overflow: hidden; /* prevent scrolling */
+}
+/* Blur effect when popup is open */
+/*.blurred {*/
+/*    filter: blur(8px);*/
+/*    pointer-events: none;*/
+/*    user-select: none;*/
+/*}*/
+
+/* Full-screen popup background */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Bootstrap modal z-index */
+}
+
+.popup-box {
+    background-color: rgb(25, 9, 16);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    z-index: 1051;
+}
+
+.hidden {
+    display: none;
+}
+
+
 

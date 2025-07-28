@@ -1,7 +1,9 @@
 package com.example.FitnessTracker.Controller;
 
+import com.example.FitnessTracker.Entity.User;
 import com.example.FitnessTracker.Entity.Workout;
 import com.example.FitnessTracker.Entity.WorkoutSession;
+import com.example.FitnessTracker.Repository.RegisterRepository;
 import com.example.FitnessTracker.Services.WorkoutSessionServices;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -28,9 +27,24 @@ public class WorkoutSessionController {
 
     @Autowired
     private WorkoutSessionServices workoutSessionServices;
+    @Autowired
+    private RegisterRepository  registerRepository;
 
     @GetMapping("/session")
     public String sessionPage(@RequestParam(required = false) String sessionId, Model model) {
+
+        //Getting that user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User user = registerRepository.findByUsername(userName);
+
+        //checking if that id is present or not
+        if(sessionId!=null && !sessionId.trim().isEmpty() && !user.getSessionId().contains(new ObjectId(sessionId))){
+        //adding sessionId to user
+            user.getSessionId().add(new  ObjectId(sessionId));
+            registerRepository.save(user);
+        }
+
         model.addAttribute("sessionId", sessionId);
         model.addAttribute("sessionStarted", sessionId != null && !sessionId.trim().isEmpty());
         model.addAttribute("workout", new Workout());
@@ -54,8 +68,17 @@ public class WorkoutSessionController {
 
         model.addAttribute("workoutsByExercise", groupedWorkouts);
 
+        // Group workouts by sessionId
+        Map<ObjectId, List<Workout>> allWorkoutsOfSession = new HashMap<>();
+        if (sessionId != null && !sessionId.trim().isEmpty()) {
+            allWorkoutsOfSession.put(new ObjectId(sessionId), workoutList);
+        }
+        model.addAttribute("allSessions", allWorkoutsOfSession);
+
         return "session";
     }
+
+
 
     @PostMapping("/session/start")
     public String startSession(RedirectAttributes redirectAttributes) {
