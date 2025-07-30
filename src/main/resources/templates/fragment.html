@@ -21,16 +21,17 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link active" th:href="@{/home}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" style="color: white" th:href="@{/prevsession}">Sessions</a></li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="sessionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Sessions
-                            </a>
-                            <ul class="dropdown-menu" style="background-color: rgba(33, 37, 41, 0.6);" aria-labelledby="sessionsDropdown">
-                                <li><a class="dropdown-item" style="color: white" th:href="@{/session}">New Session</a></li>
-                                <li><a class="dropdown-item" style="color: white" th:href="@{/prevsession}">Previous Sessions</a></li>
-                            </ul>
-                        </li>
+<!--                        <li class="nav-item dropdown">-->
+<!--                            <a class="nav-link dropdown-toggle" href="#" id="sessionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                Sessions-->
+<!--                            </a>-->
+<!--                            <ul class="dropdown-menu" style="background-color: rgba(33, 37, 41, 0.6);" aria-labelledby="sessionsDropdown">-->
+<!--                                <li><a class="dropdown-item" style="color: white" th:href="@{/session}">New Session</a></li>-->
+<!--                                -->
+<!--                            </ul>-->
+<!--                        </li>-->
 
                         <li class="nav-item"><a class="nav-link" th:href="@{/bmi}">BMI</a></li>
                         <li class="nav-item"><a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a></li>

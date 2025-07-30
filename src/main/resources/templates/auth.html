@@ -26,8 +26,8 @@
             <div id = "login-box">
                 <!-- Login Form -->
                 <form id="loginForm" th:action="@{/login/save}" method="post">
-                    <label>Username</label><br>
-                    <input type="text" name="username" required><br><br>
+                    <label>Email</label><br>
+                    <input type="email" name="email" required><br><br>
 
                     <label>Password</label><br>
                     <input type="password" name="password" required><br><br>
@@ -39,8 +39,8 @@
             <div id = "register-box" class="hidden">
                 <!-- Registration Form -->
                 <form id="registerForm" th:action="@{/register/save}" method="post" th:object="${user}" >
-                    <label>Username</label><br>
-                    <input type="text" th:field="*{username}"  required/><br><br>
+                    <label>Email</label><br>
+                    <input type="email" th:field="*{email}"  required/><br><br>
 
                     <label>Password</label><br>
                     <input id="password" type="password" th:field="*{password}"  required/><br><br>
@@ -60,11 +60,10 @@
                 <span class="switch-label" id="switchLabel">Register</span>
             </label>
 
-<!--            <button type="button" onclick="toggleForm()">Switch to Register</button>-->
 
         </div>
-    </div>
-<!--</div>-->
+</div>
+
 
 </body>
 </html>

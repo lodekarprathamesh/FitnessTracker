@@ -2,7 +2,6 @@ package com.example.FitnessTracker.Entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -19,7 +18,8 @@ public class User {
     private ObjectId id;
 
     @Indexed(unique = true)//for unique username
-    private String username;
+    private String email;
+
     private String password;
     private ArrayList<ObjectId> sessionId =  new ArrayList<>();
     private List<String> Roles;

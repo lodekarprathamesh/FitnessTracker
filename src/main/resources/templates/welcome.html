@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../css/welcome.css">
+</head>
+<body>
+
+
+<div class="bg-layer bg1"></div>
+<div class="bg-layer bg2"></div>
+
+
+<!--     NavBar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: transparent;">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/welcome}">Fitness Tracker</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <form th:action="@{/auth}" method="get">
+                <button type="submit" class="btn btn-outline-light">Login / Register</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="right">
+
+        <div id="head" class="common">Welcome to your personal workout tracker.     </div>
+        <div id="welcome-content" class="common">Start tracking, stay accountable, and see your transformation—one day at a time.</div>
+
+    </div>
+
+</div>
+
+<div class="welcome-container">
+
+    <div class="nav-tab">
+        <div class="highlight" style="width: 138px"></div>
+        <div class="sidebar">
+            <a id="side-history" data-target="0">📜 History</a>
+            <a id="side-workout" data-target="1">💪 Workouts</a>
+            <a id="side-progress" data-target="2">📈 Progress</a>
+        </div>
+    </div>
+
+
+    <div class="card-container">
+
+            <div class="card text-white" style="width: 21rem; transform: none " data-index="0">
+                <div class="card-header">⏱ Session History</div>
+                <div class="card-body card-text">Your progress is securely saved and always accessible, so you can revisit and review your workouts anytime. Stay motivated as you watch your achievements build over time!</div>
+            </div>
+
+            <div class="card text-white" style="width: 21rem;" data-index="1">
+                <div class="card-header">💪 Personalised Workouts</div>
+                <div class="card-body card-text">Keep your fitness journey organized and on track—log each workout by simply entering the exercise name, weight, reps, and sets for every session.</div>
+            </div>
+
+            <div class="card text-white" style="width: 21rem;"data-index="2">
+                <div class="card-header">📈 Track Progress</div>
+                <div class="card-body card-text">See how far you've come and stay motivated to reach new goals—your fitness transformation starts with every session you track!</div>
+            </div>
+
+
+        </div>
+
+
+    <a th:href="@{/auth}" class="btn btn-outline-light" style="z-index: 1;">Login / Register</a>
+
+
+</div>
+
+<div >
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+<script src="../js/welcome.js"></script>
+
+
+
+</body>
+</html>

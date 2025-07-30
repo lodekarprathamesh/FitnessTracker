@@ -32,3 +32,5 @@ function checkPassword(){
     return true;
 
 }
+
+document.getElementById("motivate")

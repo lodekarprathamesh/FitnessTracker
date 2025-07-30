@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthController {
-    @GetMapping("/")
-    public String homeRedirect() {
-        return "redirect:/auth";
-    }
+
+
     @GetMapping("/auth")
     public String authPage(Model model) {
         model.addAttribute("user", new User());

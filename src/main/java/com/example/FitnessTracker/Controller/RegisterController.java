@@ -4,7 +4,6 @@ import com.example.FitnessTracker.Entity.User;
 import com.example.FitnessTracker.Repository.RegisterRepository;
 import com.example.FitnessTracker.Services.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +28,8 @@ public class RegisterController {
 
     @PostMapping("/register/save")
     public String RegisterUser(@ModelAttribute("user") User user) {
-        if(registerRepository.findByUsername(user.getUsername()) != null){
-            return "redirect:/auth?error=Username already exists";
+        if(registerRepository.findByEmail(user.getEmail()) != null){
+            return "redirect:/auth?error=Email already exists";
         }
         registerService.saveNewUser(user);
         return "redirect:/home";

@@ -24,19 +24,21 @@ public class SpringSecurity{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/register/save", "/login", "/login/save", "/css/**","/img/**","/auth","/js/**","/api").permitAll()
-                        .requestMatchers("/session").authenticated()
+                        .requestMatchers("/register", "/register/save", "/login", "/login/save", "/css/**","/img/**","/auth","/js/**","/welcome","/").permitAll()
+                        .requestMatchers("/session","/api").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/auth")// usedto display the custom login page instead of the default Spring Security login page.
+                        .usernameParameter("email")
+                        .passwordParameter("password")
                         .loginProcessingUrl("/login/save")//this should be same as in the form th:action field one
                         .defaultSuccessUrl("/home", true)//if success where user will redirect
                         .failureUrl("/login?error=true") //if fail where user will redirect
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/auth?logout=true")//where to redirect when log out
+                        .logoutSuccessUrl("/welcome?logout=true")//where to redirect when log out
                         .permitAll()
                 );
 

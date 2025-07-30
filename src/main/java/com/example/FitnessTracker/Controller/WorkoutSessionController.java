@@ -14,11 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -36,7 +34,7 @@ public class WorkoutSessionController {
         //Getting that user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        User user = registerRepository.findByUsername(userName);
+        User user = registerRepository.findByEmail(userName);
 
         //checking if that id is present or not
         if(sessionId!=null && !sessionId.trim().isEmpty() && !user.getSessionId().contains(new ObjectId(sessionId))){
@@ -138,7 +136,7 @@ public class WorkoutSessionController {
         workoutSessionServices.saveWorkoutSession(session.get());
         model.addAttribute("sessionName",sessionName);
         model.addAttribute("duration",formattedDuration);
-        return "redirect:/session";
+        return "redirect:/prevsession";
     }
 
 }
