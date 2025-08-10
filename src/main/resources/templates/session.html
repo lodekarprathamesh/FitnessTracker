@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Session</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/home.css">
@@ -23,7 +24,7 @@
 <!--NavBar-->
 <div th:replace="~{fragment::navbar}"></div>
 
-<div class="d-flex flex-column justify-content-between text-white text-center" style="min-height: calc(100vh - 88px); background-color: transparent;">
+<div class="d-flex flex-column justify-content-between text-white text-center" style="min-height: calc(100vh - 88px - 65px); background-color: transparent;">
 
     <!-- Centered Main Content -->
 
@@ -75,12 +76,7 @@
         </div>
 
         <!-- Display Workouts by Exercise -->
-        <div th:if="${#maps.size(workoutsByExercise) > 0}" class="col-md-6 shadow p-4 mb-5 bg-body-tertiary rounded" style="margin-left: -30px; margin-top:30px;
-       background-color: rgba(25, 9, 16,0.6);
-       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8),
-                   0 0 10px rgba(255, 255, 255, 0.05);
-       border: 1px solid rgba(255, 255, 255, 0.08);
-     ">
+        <div th:if="${#maps.size(workoutsByExercise) > 0}" id="displayDiv" class="col-md-6 shadow p-4 mb-5 bg-body-tertiary rounded" >
             <div th:text="${dateAndTime}" id="date" style="text-align: start;padding: 0;    letter-spacing: 1px;word-spacing: 15px;"></div>
             <div th:each="entry : ${workoutsByExercise}" class="mb-4">
                 <div class="exercise-header" style="background-color: transparent" th:text="${entry.key}">Exercise Name</div>
@@ -106,11 +102,12 @@
         </div>
     </div>
 
+</div>
     <!-- Footer -->
-    <footer class="py-2" style="margin: 11px 0">
+    <footer class="py-2" style="margin: 14px 0 ; text-align: center;
+    width: 100%;">
         <p class="text-light small mb-0">&copy; 2021 Fitness Tracker</p>
     </footer>
-</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

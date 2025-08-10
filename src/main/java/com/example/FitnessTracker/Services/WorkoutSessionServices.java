@@ -29,4 +29,8 @@ public class WorkoutSessionServices {
         return workoutSessionRepo.findById(id);
     }
 
+    public void deleteById(ObjectId id) {
+        workoutSessionRepo.deleteById(id);
+    }
+
 }

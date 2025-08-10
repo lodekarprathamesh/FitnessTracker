@@ -3,81 +3,12 @@
     gsap.registerPlugin(ScrollTrigger);
 
 
-    // gsap.from("#headline", { y: 50, opacity: 0, duration: 1.2, ease: "power3.out" });
-
-    // 1. Animate IN on page load
+    // 1. Animate IN on a page load
     gsap.fromTo(".right",
         { x: 300, opacity: 0.2 },
         { x: 0, opacity: 1, ease: "power3.out", duration: 3 }
     );
 
-//     // Animate motivation quote
-//     gsap.to("#welcome-content", {
-//     scrollTrigger: {
-//     trigger: "#welcome-content",
-//         start: "top 60%",
-//         end:"top 30%",
-//         scrub:true
-// },
-//     x: 500,
-//     opacity: 0,
-//     ease: "sine.inOut"
-// });
-//
-//     // Animate welcome text
-//     gsap.from("#welcome-head", {
-//         scrollTrigger: {
-//             trigger: "#welcome-head",
-//             start: "top 80%",
-//             end: "top 55%",
-//             scrub: true
-//         },
-//         y: 50,         // Start 100px lower
-//         opacity: 0.4,     // Start fully transparent
-//         ease: "sine.inOut"
-//     });
-
-    // // Animate login/register button
-    // gsap.from(".transparent-border-button", {
-    //     scrollTrigger: {
-    //         trigger: ".transparent-border-button",
-    //         start: "top 80%",
-    //         end: "top 74%",
-    //         scrub: true
-    //     },
-    //     y: 50,         // Start 100px lower
-    //     opacity: 0.4,     // Start fully transparent
-    //     ease: "sine.inOut",
-    //     delay: 0.2
-    // });
-
-
-    // gsap.to("body", {
-    //     scrollTrigger: {
-    //         trigger: "body",
-    //         start: "top top",
-    //         end: "bottom top",
-    //         scrub: true,
-    //         markers: true
-    //     },
-    //     backgroundPosition: "100px center", // move right by 100px
-    //     ease: "none"
-    // });
-    //
-    // //welcome-container
-    // gsap.from(".welcome-container",{
-    //     scrollTrigger: {
-    //         trigger: ".welcome-container",
-    //         start: "top 90%",
-    //         end: "top 30%",
-    //         scrub: true,
-    //         markers: true
-    //     },
-    //     x: -200,
-    //     opacity: 0,
-    //     ease: "sine.inOut",
-    //     delay: 0.2
-    // });
 
     // Slide bg1 to the left & fade out
     gsap.to(".bg1", {

@@ -2,30 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Previous Session</title>
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/home.css}">
-    <link rel="stylesheet" href="../css/session.css">
+    <link rel="stylesheet" th:href="@{/css/session.css}">
 </head>
 <body>
     <div th:replace="~{fragment::navbar}"></div>
 
-    <form th:action="@{/session/start}" method="POST">
-        <button class="btn btn-outline-light" type="submit" style="    position: relative;
-    left: 14vh;
-    top: 3vh;">New Session</button>
-    </form>
+    <div  class="d-flex flex-column  text-white" style="min-height: calc(100vh - 88px - 65px); background-color: transparent">
 
-    <div id="main-content" class="container mt-5 text-light ">
-        <h2>Sessions</h2><hr>
+        <form th:action="@{/session/start}" method="POST">
+            <button id="newSessionBtn" class="btn btn-outline-light" type="submit" >New Session</button>
+        </form>
 
-        <div class="">
-            <!--  cards div-->
-            <div class="row row-cols-1 row-cols-md-3 g-4 w-66">
+        <div id="main-content" class="container m-5 mx-auto text-light ">
+            <h2>Sessions</h2><hr>
 
-                <div th:each="workout : ${allSessions}"
-                     th:if="${workout.sessionName != null and workout.sessionName != ''}"
-                     class="col">
+            <div class="">
+                <!--  cards div-->
+                <div id="card-div" class="row row-cols-1 row-cols-md-3 g-4 w-66">
+
+                    <div th:each="workout : ${allSessions}"
+                         th:if="${workout.sessionName != null and workout.sessionName != ''}"
+                         class="col">
 
                         <!--card-->
                         <div class="card text-light mb-3 mt-4 h-100 px-3 py-1 border rounded border-dark"
@@ -43,6 +47,14 @@
                                 <p>Duration:</p>
                                 <p th:text="${workout.duration}">Duration</p>
                             </div>
+
+                            <!-- DELETE FORM -->
+                            <form class="delete-form" th:attr="data-id=${workout.idString}" onsubmit="return false;">
+                                <input type="hidden" name="id" th:value="${workout.idString}" />
+                                <button type="submit" class="delete btn btn-outline-light">Delete</button>
+                            </form>
+
+
                         </div>
 
                         <!-- Popup overlay -->
@@ -58,13 +70,25 @@
 
 
 
+                    </div>
                 </div>
+
+
+
             </div>
 
 
-
         </div>
+
+
     </div>
+        <!-- Footer -->
+        <footer class="py-2" style="margin: 14px 0 ; text-align: center;
+    width: 100%;">
+            <p class="text-light small mb-0">&copy; 2021 Fitness Tracker</p>
+        </footer>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

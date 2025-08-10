@@ -6,11 +6,24 @@
     position: absolute;
     top: 20%;
 }
+.row #displayDiv{
+    margin-left: -30px; margin-top:30px;
+    background-color: rgba(25, 9, 16,0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
 
 .dropdown-item:hover,
 .dropdown-item:focus {
     background-color: transparent !important; /* Removes background change */
     color: white !important; /* Keeps text white */
+}
+
+form #newSessionBtn{
+    position: relative;
+    left: 96vh;
+    top: 5vh;
 }
 
 
@@ -52,11 +65,94 @@ body.blurred {
     max-width: 500px;
     width: 100%;
     z-index: 1051;
+    scroll-behavior: smooth;
+    max-height: 85vh;
+    overflow: auto;
+    scrollbar-color: grey rgb(25, 9, 16);
+    scrollbar-width: thin;
 }
 
 .hidden {
     display: none;
 }
+
+@media (max-width: 950px){
+    nav .container-fluid #navbarNav {
+        position: absolute;
+        right: 0px !important;
+        font-size: 1.2rem !important;
+        top: 76px !important;
+        /*width: 49%;*/
+        padding: 10px 28px 14px 28px !important;
+        background: rgba(33, 37, 41, 0.9) !important;
+        z-index: 5;
+    }
+}
+
+@media (max-width: 500px) {
+    nav .container-fluid #navbarNav {
+        position: absolute;
+        right: 0px !important;
+        font-size: 1.2rem !important;
+        top: 76px !important;
+        width: 49%;
+        padding: 10px 28px 14px 28px !important;
+        background: rgba(33, 37, 41, 0.9) !important;
+        z-index: 5;
+    }
+
+
+    nav .container-fluid .navbar-brand {
+        position: relative;
+        font-size: 4.3vh;
+        left: 0;
+    }
+
+    .navbar-toggler{
+        width: auto;
+    }
+
+    form #newSessionBtn{
+        position: relative;
+        left: 1vh;
+        top: 3vh;
+    }
+
+    .bmi-container{
+        width: 90%;
+    }
+
+    #add-workout-box {
+        background-color: transparent;
+        width: 90%;
+        height: auto;
+        line-height: 25px;
+        position: absolute;
+        top: 20%;
+    }
+
+    .row #displayDiv{
+        margin: 3rem auto;
+        width: 91%;
+        background-color: rgba(25, 9, 16,0.6);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #card-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #card-div .col{
+        width: 84%;
+    }
+
+}
+
 
 
 

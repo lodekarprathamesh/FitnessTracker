@@ -10,11 +10,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import java.time.LocalDate;
@@ -39,7 +41,7 @@ public class PrevSessionController {
         List<WorkoutSession> allsessions = new ArrayList<>();
 
         for (ObjectId sessionId : allsessionsId) {
-            allsessions.add(workoutSessionServices.findById(sessionId).get());
+            workoutSessionServices.findById(sessionId).ifPresent(allsessions::add);
         }
 
         Map<LocalDate,List<WorkoutSession>> groupedSessions = allsessions.stream().collect(Collectors.groupingBy(
@@ -66,6 +68,25 @@ public class PrevSessionController {
         model.addAttribute("groupedSessions", groupedSessions);
         return  "prevsession";
     }
+
+
+    @PostMapping("/prevsession/delete")
+    public ResponseEntity<Void> delete(@RequestParam("id") String id) {
+        try {
+            ObjectId sessionId = new ObjectId(id);
+            workoutSessionServices.deleteById(sessionId);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
+
+
+
 
 
 }

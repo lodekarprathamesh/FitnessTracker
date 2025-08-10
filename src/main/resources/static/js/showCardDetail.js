@@ -5,12 +5,57 @@
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
+    // Cache CSRF token and header name from meta tags
+    const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+    const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
+
+    document.querySelectorAll('.delete-form').forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var cardElement = form.closest('.card');
+            var workoutId = form.querySelector('input[name="id"]').value;
+
+            if (!workoutId) {
+                alert('Workout ID not found!');
+                return;
+            }
+
+            fetch('/prevsession/delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    [csrfHeader]: csrfToken  // dynamically add CSRF token header
+                },
+                body: new URLSearchParams({
+                    'id': workoutId
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        if (cardElement) {
+                            cardElement.remove();
+                        }
+                    } else {
+                        alert('Failed to delete the workout session.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Delete request failed:', error);
+                    alert('Error deleting the workout session.');
+                });
+        });
+    });
+
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', function() {
             const cardId = this.getAttribute('data-id');
             showPopup(cardId);
         });
     });
+
+
+
 
 });
 
