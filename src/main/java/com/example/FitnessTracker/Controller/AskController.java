@@ -64,7 +64,7 @@ public class AskController {
         // Remove trailing ```
         workoutPlan = workoutPlan.replaceAll("\\s*```$", "");
 
-        System.out.println(workoutPlan);
+//        System.out.println(workoutPlan);
 
         return workoutPlan; // Only the AI text, for AJAX calls via fetch
     }
