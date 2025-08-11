@@ -8,6 +8,6 @@ RUN mvn clean package -DskipTests
 # ===== Runtime Stage =====
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
-COPY --from=build /app/target/FitnessTracker.jar FitnessTracker.jar
+COPY --from=build /app/target/FitnessTracker-0.0.1-SNAPSHOT.jar FitnessTracker-0.0.1-SNAPSHOT.jar
 EXPOSE 8082
 ENTRYPOINT ["java", "-jar", "FitnessTracker-0.0.1-SNAPSHOT.jar" ,"--server.port=8082"]
