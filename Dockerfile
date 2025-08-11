@@ -10,4 +10,4 @@ FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/FitnessTracker.jar FitnessTracker.jar
 EXPOSE 8082
-ENTRYPOINT ["java", "-jar", "FitnessTracker.jar" ,"--server.port=8082"]
+ENTRYPOINT ["java", "-jar", "FitnessTracker-0.0.1-SNAPSHOT.jar" ,"--server.port=8082"]
