@@ -213,4 +213,34 @@ body::before{
     transform:  scale(0.8);
 }
 
+@media (max-width: 550px) {
+    .bg-layer {
+        background-position: left;
+    }
+
+    .container{
+        align-items: flex-start;
+        z-index: -1;
+        height: calc(100vh - 124px);;
+    }
+
+    .right{
+        top: 120px;
+    }
+
+    .container .right #head{
+        font-style: italic;
+        font-weight: 500;
+        margin-top: 50px;
+    }
+
+    .container .right #welcome-content{
+        margin: 34px 0;
+        font-weight: 600;
+    }
+    .welcome-container{
+        display: none;
+    }
+}
+
 

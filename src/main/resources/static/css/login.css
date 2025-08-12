@@ -130,4 +130,20 @@ body::before {
     display: none;
 }
 
+@media (max-width: 500px) {
+    #logo-name {
+        position: absolute;
+        z-index: 2;
+        color: aliceblue;
+        left: auto;
+        font-size: 4.3vh;
+        font-family: Arial, sans-serif;
+    }
+    .auth-side-container {
+        line-height: 6px;
+    }
+
+
+}
+
 

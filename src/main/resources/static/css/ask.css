@@ -88,11 +88,23 @@ button:disabled {
     display: inline-block;
 }
 
+#newPlan{
+    margin-bottom: 33px;
+    position: relative;
+    left: 38vh;
+}
+
+#wrap-con{
+    min-height: calc(100vh - 173px);
+}
+
 /* Responsive */
 @media (max-width: 500px) {
     .container {
         min-width: 0;
         max-width: 42vh;
+        text-align: start;
+        padding: 15px;
     }
     form #workout-questions-form {
         padding: 0px;
@@ -113,5 +125,43 @@ button:disabled {
         font-weight: bold;
         text-align: center;
         text-decoration: underline;
+    }
+
+    #newPlan{
+        position: static;
+        margin-bottom: 0;
+    }
+
+    #workout-plan-result{
+        overflow-x: hidden;
+    }
+
+    .container h1{
+        font-size: 1.5rem;
+        text-align: start !important;
+        width: 33vh;
+    }
+
+    .lead{
+        text-align: start !important;
+        font-size: 1.27rem;
+    }
+
+    .container h2{
+        font-size: 22px;
+    }
+
+    .list-group-item {
+        position: relative;
+        display: block;
+        padding: .5rem 1rem;
+        color: wheat;
+        text-decoration: none;
+        background-color: transparent;
+        border: 1px solid rgba(0, 0, 0, .125);
+    }
+
+    #wrap-con{
+        min-height: calc(100vh - 173px);
     }
 }

@@ -16,7 +16,7 @@
 
     <div  class="d-flex flex-column  text-white" style="min-height: calc(100vh - 88px - 65px); background-color: transparent">
 
-        <form th:action="@{/session/start}" method="POST">
+        <form id="newSessionForm" th:action="@{/session/start}" method="POST">
             <button id="newSessionBtn" class="btn btn-outline-light" type="submit" >New Session</button>
         </form>
 
@@ -29,7 +29,7 @@
 
                     <div th:each="workout : ${allSessions}"
                          th:if="${workout.sessionName != null and workout.sessionName != ''}"
-                         class="col">
+                         class="col" style="margin-bottom: 3vh">
 
                         <!--card-->
                         <div class="card text-light mb-3 mt-4 h-100 px-3 py-1 border rounded border-dark"
@@ -85,7 +85,7 @@
         <!-- Footer -->
         <footer class="py-2" style="margin: 14px 0 ; text-align: center;
     width: 100%;">
-            <p class="text-light small mb-0">&copy; 2021 Fitness Tracker</p>
+            <p class="text-light small mb-0">&copy; 2025 Fitness Tracker Project - Prathamesh Lodekar</p>
         </footer>
 
 

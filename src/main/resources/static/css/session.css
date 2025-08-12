@@ -118,8 +118,15 @@ body.blurred {
         top: 3vh;
     }
 
+    #newSessionForm{
+        text-align: center;
+    }
+
     .bmi-container{
         width: 90%;
+        height: auto;
+        position: relative;
+        top: -80px;
     }
 
     #add-workout-box {
@@ -128,16 +135,17 @@ body.blurred {
         height: auto;
         line-height: 25px;
         position: absolute;
-        top: 20%;
+        top: 14%;
     }
 
     .row #displayDiv{
         margin: 3rem auto;
-        width: 91%;
+        width: 90%;
         background-color: rgba(25, 9, 16,0.6);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8),
         0 0 10px rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 55vh;
     }
 
     #card-div{
@@ -150,6 +158,27 @@ body.blurred {
     #card-div .col{
         width: 84%;
     }
+
+    #logoutBtn{
+        margin-top: 6px;
+    }
+
+    #motivate {
+        font-size: 2rem;
+        font-weight: 400;
+        width: 99%;
+    }
+
+    #heading{
+        font-size: 3.4rem;
+        width: min-content;
+        margin-bottom: 73px;
+        position: relative;
+        text-align: start;
+        right: 53px;
+    }
+
+
 
 }
 

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     document.querySelectorAll('.delete-form').forEach(function(form) {
         form.addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.stopPropagation();
 
             var cardElement = form.closest('.card');
             var workoutId = form.querySelector('input[name="id"]').value;

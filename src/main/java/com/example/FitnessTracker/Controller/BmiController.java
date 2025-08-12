@@ -9,4 +9,9 @@ public class BmiController {
     public String bmi(){
         return "bmi";
     }
+
+    @GetMapping("/bmiNotlogin")
+    public String bmiNotlogin(){
+        return "bmiNotlogin";
+    }
 }

@@ -28,21 +28,17 @@
                 <li class="nav-item"><a class="nav-link active" th:href="@{/AskAi}" >Ask Ai</a></li>
             </ul>
             <form th:action="@{/logout}" method="post">
-                <button type="submit" class="btn btn-outline-light">Logout</button>
+                <button id="logoutBtn" type="submit" class="btn btn-outline-light">Logout</button>
             </form>
         </div>
     </div>
 </nav>
 
-    <!-- Background Image -->
-<!--    <div class="position-fixed top-0 start-0 w-100 h-100" style="background: url('../img/confident-sportswoman-with-dumbbell-dark.jpg') center center / cover no-repeat; z-index: -1;">-->
-<!--    </div>-->
-    <!-- Content + Footer Container -->
     <div class="d-flex flex-column justify-content-between text-white text-center" style="height: calc(100vh - 88px); background-color: transparent;">
 
         <!-- Centered Main Content -->
         <div class="d-flex flex-column justify-content-center align-items-center flex-grow-1">
-            <h1 class="display-4 fw-bold">Welcome to Fitness Tracker</h1>
+            <h1 id="heading" class="display-4 fw-bold">Welcome to Fitness Tracker</h1>
             <p id="motivate" class="lead fst-italic">A little progress each day adds up to big results. - Satya Nani</p>
 
             <!-- Start New Session Button -->
@@ -56,7 +52,7 @@
 
         <!-- Footer -->
         <footer class="py-2">
-            <p class="text-light small mb-0">&copy; 2021 Fitness Tracker</p>
+            <p class="text-light small mb-0">&copy; 2025 Fitness Tracker Project - Prathamesh Lodekar</p>
         </footer>
     </div>
 

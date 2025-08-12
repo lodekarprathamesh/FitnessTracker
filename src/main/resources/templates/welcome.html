@@ -2,9 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome</title>
     <link th:href="@{'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'}" rel="stylesheet">
     <link rel="stylesheet" href="../css/welcome.css">
+    <link rel="stylesheet" href="../css/session.css">
+
 </head>
 <body>
 
@@ -22,6 +26,12 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/welcome}">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" style="color: white" th:href="@{/session/start}">New Sessions</a></li>
+                <li class="nav-item"><a class="nav-link active" th:href="@{/bmiNotlogin}">BMI</a></li>
+            </ul>
 
             <form th:action="@{/auth}" method="get">
                 <button type="submit" class="btn btn-outline-light">Login / Register</button>
@@ -78,9 +88,10 @@
 
 </div>
 
-<div >
-
-</div>
+<!-- Footer -->
+<footer class="py-2">
+    <p class="text-light text-center small mb-0">&copy; 2025 Fitness Tracker Project - Prathamesh Lodekar</p>
+</footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -39,6 +39,7 @@ public class PrevSessionController {
 
         List<ObjectId> allsessionsId = user.getSessionId();
         List<WorkoutSession> allsessions = new ArrayList<>();
+        Collections.sort(allsessionsId,Collections.reverseOrder());
 
         for (ObjectId sessionId : allsessionsId) {
             workoutSessionServices.findById(sessionId).ifPresent(allsessions::add);

@@ -1,4 +1,4 @@
-
+if (window.innerWidth > 600) { // adjust breakpoint if needed
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
@@ -106,6 +106,9 @@
     links.forEach((link, i) => {
         link.addEventListener("click", () => activate(i));
     });
+
+}
+
 
 
 
