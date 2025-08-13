@@ -44,7 +44,6 @@ body::before{
 .bg1 {
     background-image: url("../img/confident-sportswoman-with-dumbbell-dark.jpg");
     z-index: -2;
-
 }
 
 /* Second background (hidden initially) */
@@ -214,13 +213,22 @@ body::before{
 }
 
 @media (max-width: 550px) {
+    body::before{
+        background: transparent;
+    }
+
     .bg-layer {
         background-position: left;
     }
 
+    .bg1 {
+        background-image: url("../img/bg-image.png");
+        z-index: -2;
+    }
+
     .container{
         align-items: flex-start;
-        z-index: 0;
+        z-index: -1;
         height: calc(100vh - 124px);;
     }
 
