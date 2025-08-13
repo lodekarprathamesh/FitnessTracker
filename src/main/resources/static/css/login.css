@@ -67,16 +67,26 @@ body::before {
 }
 
 .auth-side-container {
+    /*background: rgb(21 13 17 / 55%);*/
+    /*padding: 65px;*/
+    /*border-radius: 8px;*/
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+    /*width: 80%;*/
+    /*max-width: 400px;*/
+    /*line-height: 10px;*/
+    /*margin-top: 43px;*/
+    /*color: white;*/
+
+    /*height: 47%;*/
     background: rgb(21 13 17 / 55%);
     padding: 65px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
+    width: 23%;
     max-width: 400px;
     line-height: 10px;
     margin-top: 43px;
     color: white;
-
 }
 
 #formTitle{
@@ -123,7 +133,11 @@ body::before {
     color: white;
     border: none;
     cursor: pointer;
-    margin: 22px 0 34px 0px;
+    margin: 4px 0 0 0px;
+}
+
+#register-box label{
+    margin-bottom: 3px;
 }
 
 .hidden{
@@ -162,6 +176,9 @@ body::before {
     }
     .auth-side-container {
         line-height: 6px;
+        padding: 56px !important;
+        width: 62%;
+        height: 36%;
     }
 
 

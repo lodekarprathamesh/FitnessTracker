@@ -1,8 +1,14 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//
+// })
+
 function toggleForm() {
     const loginBox = document.getElementById("login-box");
     const registerBox = document.getElementById("register-box");
     const formTitle = document.getElementById("formTitle");
-    const toggleBtn = document.querySelector("button[onclick='toggleForm()']");
+    // const toggleBtn = document.querySelector("button[onclick='toggleForm()']")
+    const change = document.getElementById("change");
+
 
     const isLoginVisible = !loginBox.classList.contains("hidden");
 
@@ -10,12 +16,12 @@ function toggleForm() {
         loginBox.classList.add("hidden");
         registerBox.classList.remove("hidden");
         formTitle.innerText = "Register";
-        toggleBtn.innerText = "Switch to Login";
+        change.style.display = "none";
     } else {
         loginBox.classList.remove("hidden");
         registerBox.classList.add("hidden");
         formTitle.innerText = "Login";
-        toggleBtn.innerText = "Switch to Register";
+        change.style.display = "flex";
     }
 }
 
@@ -32,27 +38,5 @@ function checkPassword(){
     return true;
 
 }
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Get both forms
-//     const forms = document.querySelectorAll("form");
-//
-//     forms.forEach(form => {
-//         form.addEventListener("submit", function(e) {
-//             e.preventDefault();
-//
-//             const btn = form.querySelector("button[type='submit']");
-//             const spinner = btn.querySelector(".spinner");
-//
-//             btn.disabled = true; // prevent double clicks
-//             spinner.style.display = "block";
-//
-//             // submit the form after a short delay
-//             setTimeout(() => {
-//                 form.submit();
-//             }, 200); // 200ms so spinner is visible
-//         });
-//     });
-// });
 
 

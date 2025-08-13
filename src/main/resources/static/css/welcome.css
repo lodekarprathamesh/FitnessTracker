@@ -1,11 +1,13 @@
-
+* {
+    box-sizing: border-box;
+}
 
 html, body {
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
     height: auto; /* allow full scroll if content grows */
-    min-height: 100vh;
+    min-height: 100%;
     color: white;
     font-family: 'Segoe UI', sans-serif;
     background: transparent;
