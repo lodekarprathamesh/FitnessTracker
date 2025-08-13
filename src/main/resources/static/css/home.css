@@ -1,8 +1,9 @@
 body{
-    background-image: url("../img/confident-sportswoman-with-dumbbell-dark.jpg");
+    background-image: url("../img/bg-image.png");
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-size: cover;
+
 }
 .navbar-brand{
     position: relative;

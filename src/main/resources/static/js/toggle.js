@@ -33,4 +33,26 @@ function checkPassword(){
 
 }
 
-document.getElementById("motivate")
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Get both forms
+//     const forms = document.querySelectorAll("form");
+//
+//     forms.forEach(form => {
+//         form.addEventListener("submit", function(e) {
+//             e.preventDefault();
+//
+//             const btn = form.querySelector("button[type='submit']");
+//             const spinner = btn.querySelector(".spinner");
+//
+//             btn.disabled = true; // prevent double clicks
+//             spinner.style.display = "block";
+//
+//             // submit the form after a short delay
+//             setTimeout(() => {
+//                 form.submit();
+//             }, 200); // 200ms so spinner is visible
+//         });
+//     });
+// });
+
+

@@ -8,5 +8,16 @@ function askSessionName(form){
     return false;
 }
 
+fetch("/exercises/names")
+    .then(res=>res.json())
+.then(data=> {
+    let options = document.getElementById("exerciseOptions");
+    data.forEach(element => {
+        let op = document.createElement("option");
+        op.value = element;
+        options.appendChild(op);
+    })
+})
+
 
 

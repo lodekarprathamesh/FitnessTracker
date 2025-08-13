@@ -220,7 +220,7 @@ body::before{
 
     .container{
         align-items: flex-start;
-        z-index: -1;
+        z-index: 0;
         height: calc(100vh - 124px);;
     }
 
@@ -232,6 +232,7 @@ body::before{
         font-style: italic;
         font-weight: 500;
         margin-top: 50px;
+        font-size: 2.5rem;
     }
 
     .container .right #welcome-content{

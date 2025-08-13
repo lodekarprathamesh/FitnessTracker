@@ -50,16 +50,23 @@
                 <form th:action="@{/addWorkout}" th:object="${workout}" method="post">
                     <input type="hidden" name="sessionId" th:value="${sessionId}">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Workout Name:</label>
-                        <input type="text" id="name" th:field="*{name}" class="form-control" required>
+<!--                        <label for="name" class="form-label">Workout Name:</label>-->
+<!--                        <input type="text" id="name" th:field="*{name}" class="form-control" required>-->
+
+                        <label for="name" class="form-label">Exercise Name</label>
+                        <input class="form-control" list="exerciseOptions" id="name" th:field="*{name}" placeholder="Search Exercise..." required>
+                        <datalist id="exerciseOptions">
+
+                        </datalist>
+
                     </div>
                     <div class="mb-3">
                         <label for="weight" class="form-label">Weight (kg):</label>
-                        <input type="text" id="weight" th:field="*{weight}" class="form-control" required>
+                        <input type="text" id="weight" th:field="*{weight}" th:value="${weight == 0} ? '' : ${weight}"class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="reps" class="form-label">Reps:</label>
-                        <input type="text" id="reps" th:field="*{reps}" class="form-control" required>
+                        <input type="text" id="reps" th:field="*{reps}" th:value="${reps == 0} ? '' : ${reps}" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Workout</button>
                 </form>
