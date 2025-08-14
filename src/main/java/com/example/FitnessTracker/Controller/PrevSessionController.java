@@ -32,6 +32,8 @@ public class PrevSessionController {
 
     @GetMapping("/prevsession")
     public String prevsession(Model model) throws JsonProcessingException {
+//        workoutSessionServices.cleanUp();
+        workoutSessionServices.deleteUnnamedSessions();
         //getting user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
@@ -74,7 +76,11 @@ public class PrevSessionController {
     @PostMapping("/prevsession/delete")
     public ResponseEntity<Void> delete(@RequestParam("id") String id) {
         try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            User user = registerRepository.findByEmail(authentication.getName());
             ObjectId sessionId = new ObjectId(id);
+            user.getSessionId().remove(sessionId);
+            registerRepository.save(user);
             workoutSessionServices.deleteById(sessionId);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
@@ -83,8 +89,6 @@ public class PrevSessionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
 
 
 

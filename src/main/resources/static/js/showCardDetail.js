@@ -1,7 +1,4 @@
-// function handleCardClick(element) {
-//     const date = element.getAttribute("data-date");
-//     showPopup(date);
-// }
+
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
@@ -131,4 +128,5 @@ function hidePopup(cardId) {
     const mainContent = document.getElementById('main-content');
     if (mainContent) mainContent.classList.remove('blurred');
 }
+
 

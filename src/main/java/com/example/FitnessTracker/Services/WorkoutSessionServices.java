@@ -18,6 +18,7 @@ public class WorkoutSessionServices {
     private WorkoutSessionRepo workoutSessionRepo;
 
     public List<WorkoutSession> getAllWorkoutSessions() {
+
         return workoutSessionRepo.findAll();
     }
 
@@ -31,6 +32,16 @@ public class WorkoutSessionServices {
 
     public void deleteById(ObjectId id) {
         workoutSessionRepo.deleteById(id);
+    }
+
+    public void deleteUnnamedSessions() {
+        List<WorkoutSession> all = workoutSessionRepo.findAll();
+        for (WorkoutSession workoutSession : all) {
+            if(workoutSession.getSessionName() == null){
+                workoutSessionRepo.deleteById(workoutSession.getId());
+            }
+        }
+
     }
 
 }

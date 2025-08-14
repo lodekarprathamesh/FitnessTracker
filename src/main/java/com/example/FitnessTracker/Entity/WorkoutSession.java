@@ -1,5 +1,6 @@
 package com.example.FitnessTracker.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
@@ -15,7 +16,8 @@ import java.util.List;
 
 @Document(collection = "workoutSession")
 @Data
-@NoArgsConstructor //creates a no argument constructor
+@NoArgsConstructor
+@AllArgsConstructor//creates a no argument constructor
 public class WorkoutSession {
     @Id
     private ObjectId id;

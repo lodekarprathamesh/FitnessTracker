@@ -7,6 +7,8 @@ import com.example.FitnessTracker.Repository.RegisterRepository;
 import com.example.FitnessTracker.Services.WorkoutSessionServices;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -30,18 +32,6 @@ public class WorkoutSessionController {
 
     @GetMapping("/session")
     public String sessionPage(@RequestParam(required = false) String sessionId, Model model) {
-
-        //Getting that user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userName = authentication.getName();
-        User user = registerRepository.findByEmail(userName);
-
-        //checking if that id is present or not
-        if(sessionId!=null && !sessionId.trim().isEmpty() && !user.getSessionId().contains(new ObjectId(sessionId))){
-        //adding sessionId to user
-            user.getSessionId().add(new  ObjectId(sessionId));
-            registerRepository.save(user);
-        }
 
         model.addAttribute("sessionId", sessionId);
         model.addAttribute("sessionStarted", sessionId != null && !sessionId.trim().isEmpty());
@@ -77,7 +67,6 @@ public class WorkoutSessionController {
     }
 
 
-
     @PostMapping("/session/start")
     public String startSession(RedirectAttributes redirectAttributes) {
         // Get logged-in username
@@ -110,6 +99,7 @@ public class WorkoutSessionController {
         session.getWorkouts().add(workout);
 
         workoutSessionServices.saveWorkoutSession(session);
+
         redirectAttributes.addFlashAttribute("success", "Workout session added");
         redirectAttributes.addAttribute("sessionId", sessionId.toString());
         return "redirect:/session";
@@ -118,6 +108,18 @@ public class WorkoutSessionController {
 
     @PostMapping("/endSession")
     public String endSession(@RequestParam("sessionId") ObjectId sessionId,RedirectAttributes redirectAttributes,Model model,@RequestParam("sessionName") String sessionName) {
+
+        //Getting that user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User user = registerRepository.findByEmail(userName);
+
+        //checking if that id is present or not
+        if(sessionId!=null){
+            //adding sessionId to user
+            user.getSessionId().add(sessionId);
+            registerRepository.save(user);
+        }
 
         Optional<WorkoutSession> session = workoutSessionServices.findById(sessionId);
         if(session.isEmpty()){
