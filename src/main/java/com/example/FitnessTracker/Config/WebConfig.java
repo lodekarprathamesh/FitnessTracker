@@ -11,8 +11,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         // ✅ Cache images for 30 days
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations("classpath:/static/images/")
+        registry.addResourceHandler("/img/**")
+                .addResourceLocations("classpath:/static/img/")
                 .setCachePeriod(2592000); // seconds = 30 days
 
         // ❌ No cache for CSS/JS during development

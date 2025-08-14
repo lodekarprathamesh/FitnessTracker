@@ -7,7 +7,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: auto; /* allow full scroll if content grows */
-    min-height: 100%;
+    min-height: 100dvh;
     color: white;
     font-family: 'Segoe UI', sans-serif;
     background: transparent;
@@ -82,6 +82,8 @@ body::before{
     display: inline-block; /* Makes list items display horizontally */
     margin-right: 15px;
 }
+
+
 
 .container {
     height: calc(100vh - 88px);
@@ -226,6 +228,11 @@ body::before{
     .bg1 {
         background-image: url("../img/bg-image.png");
         z-index: -2;
+    }
+
+    #logBtn{
+        margin-top: 9px;
+        width: 82px;
     }
 
     .container{

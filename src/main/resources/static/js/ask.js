@@ -33,33 +33,49 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
 
-    fetch('/AskAiPlanAjax', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'text/html',
-            [csrfHeader]: csrfToken
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.text())
-        .then(result => {
-            // console.log('AI response:', result);
-            // todo -display the response in the UI (e.g. in a div)
-            const resultDiv = document.getElementById('workout-plan-result');
-            const qna = document.getElementById('qna-div');
-            if(resultDiv) {
-                // You can insert raw text or sanitized HTML depending on your backend response
-                const box = document.createElement('div');
-                box.innerHTML = result;
-                resultDiv.append(box);
-                qna.style.display = 'none';
-                document.querySelector(".hidden-btn").style.display = 'block';
-            }
+    document.querySelector(".spinner-border").style.display = 'inline-block';
+    const btn = document.getElementById('workoutBtn');
+    btn.disabled = true;
+    document.getElementById('btnText').innerText = '';
+
+        fetch('/AskAiPlanAjax', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html',
+                [csrfHeader]: csrfToken
+            },
+            body: JSON.stringify(data)
         })
-        .catch(error => console.error('Error:', error));
+            .then(response => response.text())
+            .then(result => {
+                // console.log('AI response:', result);
+                // todo -display the response in the UI (e.g. in a div)
+                const resultDiv = document.getElementById('workout-plan-result');
+                const qna = document.getElementById('qna-div');
+                if(resultDiv) {
+                    // You can insert raw text or sanitized HTML depending on your backend response
+                    const box = document.createElement('div');
+                    box.innerHTML = result;
+                    resultDiv.append(box);
+                    qna.style.display = 'none';
+                    document.querySelector(".spinner-border").style.display = 'none';
+                    document.querySelector(".hidden-btn").style.display = 'block';
+                }
+            })
+            .catch(error => console.error('Error:', error))
+            .finally(
+                () => {
+                    // Hide spinner & re-enable button regardless of success or error
+                    document.querySelector(".spinner-border").style.display  = 'none';
+                    btn.disabled = false;
+                    document.getElementById('btnText').innerText = 'Get Workout Plan';
+                });
+
+
+
+
 });
 
 

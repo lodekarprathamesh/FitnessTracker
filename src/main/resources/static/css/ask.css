@@ -83,6 +83,11 @@ button:disabled {
     cursor: not-allowed;
 }
 
+#workoutBtn{
+    width: 22vh;
+    height: 44px;
+}
+
 /* Next and Previous buttons inline */
 .next, .prev {
     display: inline-block;
@@ -116,6 +121,20 @@ button:disabled {
         margin-top: 10px;
     }
 
+
+    #workoutBtn{
+        width: 50%;
+    }
+
+    .prev{
+        width: 50%;
+    }
+
+    .next{
+        width: 50%;
+    }
+
+
     #workout-questions-form label{
         font-size: 1.4rem;
         padding-bottom: 16px;
@@ -129,7 +148,8 @@ button:disabled {
 
     #newPlan{
         position: static;
-        margin-bottom: 0;
+        width: 50%;
+        margin-left: 10vh;
     }
 
     #workout-plan-result{

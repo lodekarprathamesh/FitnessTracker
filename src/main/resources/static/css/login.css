@@ -33,6 +33,7 @@ body::before {
 
 #logo-name{
     position: absolute;
+    top: 22px;
     z-index: 2;
     color: aliceblue;
     left: auto;
@@ -82,8 +83,8 @@ body::before {
     padding: 65px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 23%;
-    max-width: 400px;
+    min-width: 30%;
+    /*max-width: 400px;*/
     line-height: 10px;
     margin-top: 43px;
     color: white;
@@ -118,6 +119,7 @@ body::before {
 
 #login-box button {
     padding: 10px;
+    height: 43px;
     font-size: 16px;
     background-color: #2c3e50;
     color: white;
@@ -127,7 +129,8 @@ body::before {
 }
 
 #register-box button {
-    PADDING: 10px;
+    padding: 10px;
+    height: 43px;
     font-size: 16px;
     background-color: #2c3e50;
     color: white;
@@ -171,14 +174,15 @@ body::before {
         z-index: 2;
         color: aliceblue;
         left: auto;
+        top: 30px;
         font-size: 4.3vh;
         font-family: Arial, sans-serif;
     }
     .auth-side-container {
         line-height: 6px;
         padding: 56px !important;
-        width: 62%;
-        height: 36%;
+        width: 98%;
+        height: 46%;
     }
 
 
