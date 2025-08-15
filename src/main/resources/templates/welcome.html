@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link th:href="@{'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'}" rel="stylesheet">
+
     <link rel="stylesheet" href="../css/welcome.css">
     <link rel="stylesheet" href="../css/session.css">
-
+    <link rel="stylesheet" href="../css/info.css">
 </head>
 <body>
 
 
 <div class="bg-layer bg1"></div>
-<div class="bg-layer bg2"></div>
 
 
 <!--     NavBar -->
@@ -52,38 +54,35 @@
 
 <div class="welcome-container">
 
-    <div class="nav-tab">
-        <div class="highlight" style="width: 138px"></div>
-        <div class="sidebar">
-            <a id="side-history" data-target="0">📜 History</a>
-            <a id="side-workout" data-target="1">💪 Workouts</a>
-            <a id="side-progress" data-target="2">📈 Progress</a>
+    <section class="features-section">
+        <div class="f-container">
+            <div id="tit">
+                <p class="intro-text">
+                    FitLife is your personal companion on your journey to a healthier and stronger body. Whether you're a beginner or a fitness enthusiast, we provide customized workouts, tracking tools and AI-powered Workout Plans to help you reach your goals.
+                </p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Personalized Plans</h3>
+                    <p>Create workouts that fit your goals and schedule.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your workouts and see your improvements over time.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Ask Ai</h3>
+                    <p>Get personalised workout plan with the Ask Ai feature.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
 
-    <div class="card-container">
-
-            <div class="card text-white" style="width: 21rem; transform: none " data-index="0">
-                <div class="card-header">⏱ Session History</div>
-                <div class="card-body card-text">Your progress is securely saved and always accessible, so you can revisit and review your workouts anytime. Stay motivated as you watch your achievements build over time!</div>
-            </div>
-
-            <div class="card text-white" style="width: 21rem;" data-index="1">
-                <div class="card-header">💪 Personalised Workouts</div>
-                <div class="card-body card-text">Keep your fitness journey organized and on track—log each workout by simply entering the exercise name, weight, reps, and sets for every session.</div>
-            </div>
-
-            <div class="card text-white" style="width: 21rem;"data-index="2">
-                <div class="card-header">📈 Track Progress</div>
-                <div class="card-body card-text">See how far you've come and stay motivated to reach new goals—your fitness transformation starts with every session you track!</div>
-            </div>
-
-
-        </div>
-
-
-    <a th:href="@{/auth}" class="btn btn-outline-light" style="z-index: 1;">Login / Register</a>
 
 
 </div>
@@ -98,6 +97,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script src="../js/welcome.js"></script>
 
 

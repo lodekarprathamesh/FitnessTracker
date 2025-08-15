@@ -78,7 +78,7 @@ document.getElementById("registerForm").addEventListener("submit", (event)=>{
     setTimeout(()=>{
         document.querySelector(".regisSpin").style.display = "none";
         btn.disabled = false;
-        document.getElementById("btnTextSub").innerText=submit;
+        document.getElementById("btnTextSub").innerText="submit";
         event.target.submit();
 
     },1000);

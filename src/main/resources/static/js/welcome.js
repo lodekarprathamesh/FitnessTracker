@@ -11,32 +11,32 @@ if (window.innerWidth > 600) { // adjust breakpoint if needed
 
 
     // Slide bg1 to the left & fade out
-    gsap.to(".bg1", {
-        scrollTrigger: {
-            trigger: ".bg1",
-            start: "top top",
-            end: "bottom 50%",
-            scrub: true
-        },
-        opacity: 0,
-        ease: "none"
-    });
-
-    // Slide bg2 in from right & fade in
-    gsap.fromTo(".bg2",
-        {opacity: 0 },
-        {
-            scrollTrigger: {
-                trigger: ".bg1", // triggers at the same time as bg1 scrolls out
-                start: "top top",
-                end: "bottom 50%",
-                scrub: true
-            },
-
-            opacity: 1,
-            ease: "none"
-        }
-    );
+    // gsap.to(".bg1", {
+    //     scrollTrigger: {
+    //         trigger: ".bg1",
+    //         start: "top top",
+    //         end: "bottom 50%",
+    //         scrub: true
+    //     },
+    //     opacity: 0,
+    //     ease: "none"
+    // });
+    //
+    // // Slide bg2 in from right & fade in
+    // gsap.fromTo(".bg2",
+    //     {opacity: 0 },
+    //     {
+    //         scrollTrigger: {
+    //             trigger: ".bg1", // triggers at the same time as bg1 scrolls out
+    //             start: "top top",
+    //             end: "bottom 50%",
+    //             scrub: true
+    //         },
+    //
+    //         opacity: 1,
+    //         ease: "none"
+    //     }
+    // );
 
     gsap.from(".card", {
         scrollTrigger: {
@@ -49,6 +49,7 @@ if (window.innerWidth > 600) { // adjust breakpoint if needed
         opacity: 0
     });
 
+
     gsap.from(".nav-tab", {
         scrollTrigger: {
             trigger: ".nav-tab",
@@ -60,6 +61,22 @@ if (window.innerWidth > 600) { // adjust breakpoint if needed
         x:-200,
         opacity: 0
     });
+
+    // gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".feature", {
+        scrollTrigger: {
+            trigger: ".features",
+            start: "top 80%",
+            end: "+=300",
+            scrub: true,
+        },
+        opacity: 0,
+        y: 50,
+        stagger: 0.3,
+        ease: "power2.out"
+    });
+
 
 
 
