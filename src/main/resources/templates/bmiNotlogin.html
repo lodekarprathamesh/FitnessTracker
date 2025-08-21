@@ -18,7 +18,8 @@
             margin: 0;
         }
         .bmi-container {
-            background-color: rgba(25, 9, 16, 0.7);
+            /*background-color: rgba(25, 9, 16, 0.7);*/
+            background-color: rgba(20, 20, 20, 0.95);
             color: white;
             padding: 30px 40px;
             border-radius: 10px;
@@ -63,11 +64,12 @@
             font-size: 1.1rem;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: transform 0.3s ease, background-color 0.3s ease;
             height: 3rem;
         }
         #bmiButton:hover {
             background: #303f9f;
+            transform: scale(1.02);
         }
         .result {
             margin-top: 20px;

@@ -1,3 +1,19 @@
+:root {
+    --bg-primary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --accent-main: #0284c7;
+    --accent-secondary: #0891b2;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --accent-main: #0ea5e9;
+    --accent-secondary: #06b6d4;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -219,6 +235,15 @@ body::before{
 .py-2 {
     padding-top: 2.5rem !important;
     padding-bottom: 2rem !important;
+}
+
+.logIN_OUTBtn{
+    transition: transform 0.4s ease, background-color 0.3s ease;
+}
+
+.logIN_OUTBtn:hover {
+    transform: scale(1.04);
+    background-color: white
 }
 
 @media (max-width: 550px) {

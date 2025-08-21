@@ -7,8 +7,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
 
     document.querySelectorAll('.delete-form').forEach(function(form) {
+
         form.addEventListener('submit', function(event) {
-            event.stopPropagation();
+                event.preventDefault();   // ✅ stop normal form submission
+                event.stopPropagation();  // ✅ stop bubbling to .card click
+
+
+            // show confirmation dialog
+            if (!confirm("Are you sure you want to delete this session?")) {
+                return; // if user cancels, do nothing
+            }
 
             var cardElement = form.closest('.card');
             var workoutId = form.querySelector('input[name="id"]').value;
@@ -42,6 +50,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     alert('Error deleting the workout session.');
                 });
         });
+
+            // ✅ Extra safeguard: stop delete button click from bubbling to card
+            const deleteButton = form.querySelector('button, input[type="submit"]');
+            if (deleteButton) {
+                deleteButton.addEventListener('click', e => e.stopPropagation());
+            }
+
     });
 
     document.querySelectorAll('.card').forEach(card => {
@@ -50,8 +65,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             showPopup(cardId);
         });
     });
-
-
 
 
 });

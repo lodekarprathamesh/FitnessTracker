@@ -1,3 +1,21 @@
+:root {
+    --bg-dark: oklch(0.1 0.005 20);
+    --bg: oklch(0.15 0.005 20);
+    --bg-light: oklch(0.2 0.005 20);
+    --text: oklch(0.96 0.01 20);
+    --text-muted: oklch(0.76 0.01 20);
+    --highlight: oklch(0.5 0.01 20);
+    --border: oklch(0.4 0.01 20);
+    --border-muted: oklch(0.3 0.01 20);
+    --primary: oklch(0.76 0.1 20);
+    --secondary: oklch(0.76 0.1 200);
+    --danger: oklch(0.7 0.05 30);
+    --warning: oklch(0.7 0.05 100);
+    --success: oklch(0.7 0.05 160);
+    --info: oklch(0.7 0.05 260);
+    --bs-dark: #212529
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -52,10 +70,10 @@ body::before {
 }
 
 .auth-side-container {
-    background: rgb(21 13 17 / 55%);
+    background: var(--bg-light);
     padding: 65px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 10px rgb(212 212 212 / 10%);;
     min-width: 30%;
     /*max-width: 400px;*/
     line-height: 10px;
@@ -65,6 +83,7 @@ body::before {
 
 #formTitle{
     margin-bottom: 34px;
+    border-bottom: 1px solid white;
 }
 
 #login-box h2 {
@@ -81,12 +100,16 @@ body::before {
     margin-bottom: 19px;
     padding: 10px;
     font-size: 14px;
+    border-radius: 4px;
+    border: none;
 }
 
 #register-box input {
     margin-bottom: 19px;
     padding: 10px;
     font-size: 14px;
+    border-radius: 4px;
+    border: none;
 }
 
 
@@ -94,22 +117,34 @@ body::before {
     padding: 10px;
     height: 43px;
     font-size: 16px;
-    background-color: #2c3e50;
+    background-color: #d01224;
     color: white;
-    border: none;
     cursor: pointer;
     margin: 1px 0 34px 0px;
+    border-radius: 4px;
+    border: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 #register-box button {
     padding: 10px;
     height: 43px;
     font-size: 16px;
-    background-color: #2c3e50;
+    background-color: #d01224;
     color: white;
-    border: none;
     cursor: pointer;
     margin: 4px 0 0 0px;
+    border-radius: 4px;
+    border: none;
+    transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+#register-box button:hover,
+#login-box button:hover {
+
+    background-color: #a40817;
+    color: #fff;
+    transform: scale(1.03);
 }
 
 #register-box label{
@@ -118,6 +153,11 @@ body::before {
 
 .hidden{
     display: none;
+}
+
+#confPass{
+    border-top: 1px solid white;
+    padding-top: 24px;
 }
 
 
@@ -139,6 +179,8 @@ body::before {
         0%   { transform: translateY(-50%) rotate(0deg); }
         100% { transform: translateY(-50%) rotate(360deg); }
     }
+
+
 
 
 @media (max-width: 500px) {

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Workout Logger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /*body {*/
+        /*    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+        /*    background-image: url("../static/img/bg-image.png");*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: cover;*/
+        /*    min-height: 100vh;*/
+        /*    padding: 20px;*/
+        /*    color: #e2e8f0;*/
+        /*}*/
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #64748b, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .add-exercise-section {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .exercise-input {
+            padding: 12px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            color: #e2e8f0;
+            margin: 0 10px;
+            min-width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .exercise-input:focus {
+            outline: none;
+            background: rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .exercise-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .add-exercise-btn {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .add-exercise-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .exercise-container {
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .exercise-header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .exercise-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .exercise-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-set-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .add-set-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .delete-exercise-btn {
+            background: rgba(239, 68, 68, 0.8);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .delete-exercise-btn:hover {
+            background: rgba(239, 68, 68, 1);
+        }
+
+        .exercise-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .exercise-table th {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #e2e8f0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .exercise-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+
+        .exercise-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .set-input {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 1rem;
+            width: 80px;
+            text-align: center;
+            transition: border-color 0.2s ease;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            color: #e2e8f0;
+        }
+
+        .set-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .delete-set-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .delete-set-btn:hover {
+            background: #dc2626;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e2e8f0;
+            display: block;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+            font-size: 1.2rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .exercise-input {
+                min-width: 250px;
+                margin: 10px 0;
+            }
+
+            .add-exercise-btn {
+                margin: 10px 0;
+            }
+
+            .exercise-controls {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>💪 Dynamic Workout Logger</h1>
+
+    <div class="add-exercise-section">
+        <input type="text" id="newExerciseName" class="exercise-input" placeholder="Enter exercise name (e.g., Bench Press, Squats)">
+        <button class="add-exercise-btn" onclick="addExercise()">Add Exercise</button>
+    </div>
+
+    <div id="exercisesContainer">
+        <div class="empty-state">
+            No exercises added yet. Start by adding your first exercise above! 🏋️‍♂️
+        </div>
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <span class="stat-number" id="totalExercises">0</span>
+            <div class="stat-label">Exercises</div>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number" id="totalSets">0</span>
+            <div class="stat-label">Total Sets</div>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number" id="totalVolume">0</span>
+            <div class="stat-label">Total Volume</div>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number" id="avgWeight">0</span>
+            <div class="stat-label">Avg Weight</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let exercises = {};
+    let exerciseCounter = 0;
+
+    function addExercise() {
+        const exerciseNameInput = document.getElementById('newExerciseName');
+        const exerciseName = exerciseNameInput.value.trim();
+
+        if (!exerciseName) {
+            alert('Please enter an exercise name!');
+            exerciseNameInput.focus();
+            return;
+        }
+
+        const exerciseId = ++exerciseCounter;
+        exercises[exerciseId] = {
+            name: exerciseName,
+            sets: []
+        };
+
+        exerciseNameInput.value = '';
+        exerciseNameInput.focus();
+
+        renderExercises();
+        updateStats();
+    }
+
+    function deleteExercise(exerciseId) {
+        if (confirm('Are you sure you want to delete this exercise and all its sets?')) {
+            delete exercises[exerciseId];
+            renderExercises();
+            updateStats();
+        }
+    }
+
+    function addSet(exerciseId) {
+        if (!exercises[exerciseId]) return;
+
+        const setNumber = exercises[exerciseId].sets.length + 1;
+        exercises[exerciseId].sets.push({
+            setNumber: setNumber,
+            weight: '',
+            reps: ''
+        });
+
+        renderExercises();
+    }
+
+    function deleteSet(exerciseId, setIndex) {
+        if (!exercises[exerciseId]) return;
+
+        exercises[exerciseId].sets.splice(setIndex, 1);
+
+        // Renumber the remaining sets
+        exercises[exerciseId].sets.forEach((set, index) => {
+            set.setNumber = index + 1;
+        });
+
+        renderExercises();
+        updateStats();
+    }
+
+    function updateSetValue(exerciseId, setIndex, field, value) {
+        if (!exercises[exerciseId] || !exercises[exerciseId].sets[setIndex]) return;
+
+        exercises[exerciseId].sets[setIndex][field] = value;
+        updateStats();
+    }
+
+    function renderExercises() {
+        const container = document.getElementById('exercisesContainer');
+
+        if (Object.keys(exercises).length === 0) {
+            container.innerHTML = `
+                    <div class="empty-state">
+                        No exercises added yet. Start by adding your first exercise above! 🏋️‍♂️
+                    </div>
+                `;
+            return;
+        }
+
+        container.innerHTML = Object.entries(exercises).map(([exerciseId, exercise]) => `
+                <div class="exercise-container">
+                    <div class="exercise-header">
+                        <div class="exercise-title">${exercise.name}</div>
+                        <div class="exercise-controls">
+                            <button class="add-set-btn" onclick="addSet(${exerciseId})">+ Add Set</button>
+                            <button class="delete-exercise-btn" onclick="deleteExercise(${exerciseId})">Delete Exercise</button>
+                        </div>
+                    </div>
+                    <table class="exercise-table">
+                        <thead>
+                            <tr>
+                                <th>Set</th>
+                                <th>Weight (lbs/kg)</th>
+                                <th>Reps</th>
+                                <th>Volume</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${exercise.sets.length === 0 ? `
+                                <tr>
+                                    <td colspan="5" style="text-align: center; color: #6b7280; padding: 20px;">
+                                        Click "Add Set" to start logging sets for this exercise
+                                    </td>
+                                </tr>
+                            ` : exercise.sets.map((set, setIndex) => {
+            const weight = parseFloat(set.weight) || 0;
+            const reps = parseInt(set.reps) || 0;
+            const volume = weight * reps;
+
+            return `
+                                    <tr class="fade-in">
+                                        <td style="font-weight: 600;">${set.setNumber}</td>
+                                        <td>
+                                            <input type="number"
+                                                   class="set-input"
+                                                   value="${set.weight}"
+                                                   placeholder="0"
+                                                   min="0"
+                                                   step="0.5"
+                                                   oninput="updateSetValue(${exerciseId}, ${setIndex}, 'weight', this.value)">
+                                        </td>
+                                        <td>
+                                            <input type="number"
+                                                   class="set-input"
+                                                   value="${set.reps}"
+                                                   placeholder="0"
+                                                   min="0"
+                                                   oninput="updateSetValue(${exerciseId}, ${setIndex}, 'reps', this.value)">
+                                        </td>
+                                        <td style="font-weight: 600; color: #10b981;">
+                                            ${volume > 0 ? volume.toFixed(1) : '-'}
+                                        </td>
+                                        <td>
+                                            <button class="delete-set-btn" onclick="deleteSet(${exerciseId}, ${setIndex})">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `;
+        }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `).join('');
+    }
+
+    function updateStats() {
+        const totalExercises = Object.keys(exercises).length;
+        let totalSets = 0;
+        let totalVolume = 0;
+        let totalWeightEntries = 0;
+        let totalWeight = 0;
+
+        Object.values(exercises).forEach(exercise => {
+            exercise.sets.forEach(set => {
+                totalSets++;
+                const weight = parseFloat(set.weight) || 0;
+                const reps = parseInt(set.reps) || 0;
+                totalVolume += weight * reps;
+
+                if (weight > 0) {
+                    totalWeight += weight;
+                    totalWeightEntries++;
+                }
+            });
+        });
+
+        const avgWeight = totalWeightEntries > 0 ? totalWeight / totalWeightEntries : 0;
+
+        document.getElementById('totalExercises').textContent = totalExercises;
+        document.getElementById('totalSets').textContent = totalSets;
+        document.getElementById('totalVolume').textContent = totalVolume.toFixed(1);
+        document.getElementById('avgWeight').textContent = avgWeight.toFixed(1);
+    }
+
+    // Allow pressing Enter to add exercise
+    document.getElementById('newExerciseName').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            addExercise();
+        }
+    });
+
+    // Initialize
+    updateStats();
+</script>
+</body>
+</html>

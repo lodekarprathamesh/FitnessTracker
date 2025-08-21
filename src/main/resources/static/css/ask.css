@@ -14,11 +14,13 @@ body{
     min-width: 61vh;
     max-width: 105vh;
     margin: 30px auto;
-    background: rgba(25, 9, 16, 0.8);
+    /*background: rgba(25, 9, 16, 0.8);*/
+    background: rgba(20, 20, 20, 0.95);
     padding: 20px 30px;
     border-radius: 8px;
     color: #f0f0f0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 div#head {

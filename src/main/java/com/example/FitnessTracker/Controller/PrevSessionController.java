@@ -73,6 +73,7 @@ public class PrevSessionController {
     }
 
 
+
     @PostMapping("/prevsession/delete")
     public ResponseEntity<Void> delete(@RequestParam("id") String id) {
         try {
@@ -89,7 +90,6 @@ public class PrevSessionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
 
 
 

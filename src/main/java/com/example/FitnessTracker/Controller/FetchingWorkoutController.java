@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -43,7 +42,7 @@ public class FetchingWorkoutController {
         List<Workout> workoutList = session.get().getWorkouts();
         // Group workouts by exercise name
         Map<String, List<Workout>> mapOfWorkout = workoutList.stream()
-                .collect(Collectors.groupingBy(Workout::getName));
+                .collect(Collectors.groupingBy(Workout::getExerciseName));
 
         return mapOfWorkout;
 

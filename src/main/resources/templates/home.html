@@ -28,7 +28,8 @@
                 <li class="nav-item"><a class="nav-link active" th:href="@{/AskAi}" >Ask Ai</a></li>
             </ul>
             <form th:action="@{/logout}" method="post">
-                <button id="logoutBtn" type="submit" class="btn btn-outline-light">Logout</button>
+                <button id="logoutBtn" type="submit" class="btn btn-outline-light
+logIN_OUTBtn">Logout</button>
             </form>
         </div>
     </div>
@@ -44,7 +45,7 @@
             <!-- Start New Session Button -->
 
                 <form th:action="@{/session/start}" method="POST">
-                    <button class="btn btn-outline-light mt-3" type="submit">New Session</button>
+                    <button class="btn btn-outline-light mt-3 sessionBtnAni" type="submit">New Session</button>
                 </form>
 
 <!--            <a th:href="@{/session/start}" class="btn btn-primary btn-lg mt-3">New Session</a>-->

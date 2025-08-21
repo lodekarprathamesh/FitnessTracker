@@ -17,61 +17,56 @@
     <div  class="d-flex flex-column  text-white" style="min-height: calc(100vh - 88px - 65px); background-color: transparent">
 
         <form id="newSessionForm" th:action="@{/session/start}" method="POST">
-            <button id="newSessionBtn" class="btn btn-outline-light" type="submit" >New Session</button>
+            <button id="newSessionBtn" class="btn btn-outline-light sessionBtnAni" type="submit" >New Session</button>
         </form>
 
         <div id="main-content" class="container m-5 mx-auto text-light ">
             <h2>Sessions</h2><hr>
 
             <div class="">
-                <!--  cards div-->
+
+                <!-- Cards div -->
                 <div id="card-div" class="row row-cols-1 row-cols-md-3 g-4 w-66">
 
                     <div th:each="workout : ${allSessions}"
                          th:if="${workout.sessionName != null and workout.sessionName != ''}"
-                         class="col" style="margin-bottom: 3vh">
+                         class="col" style="margin-bottom: 3vh"
+                         th:attr="data-id=${workout.idString}">
 
-                        <!--card-->
                         <div class="card text-light mb-3 mt-4 h-100 px-3 py-1 border rounded border-dark"
-                             style="max-width: 20rem; background-color: rgba(25, 9, 16, 0.7); cursor: pointer;"
-                             th:attr="data-id=${workout.idString}"
-                        >
+                             style="max-width: 20rem; background-color: rgba(20, 20, 20, 0.95); cursor: pointer;">
 
-                            <input type="hidden" th:value="${workout.id}" name="workout.id">
+                            <div class="card-head" style="font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 23px;">
+                                <div th:text="${#temporals.format(workout.getStartTime().toLocalDate(), 'EEEE, dd MMM yyyy')}"
+                                     class="card-header">Date</div>
 
-                            <div th:text="${#temporals.format(workout.getStartTime().toLocalDate(), 'EEEE, dd MMM yyyy')}"
-                                 th:class="card-header">Date</div>
+                                <!-- DELETE FORM -->
+                                <form class="delete-form" th:attr="data-id=${workout.idString}" onsubmit="return false;">
+                                    <input type="hidden" name="id" th:value="${workout.idString}" />
+                                    <button type="submit" class="delete btn "><img src="../img/delete.png" style="
+    height: 44px;"></button>
+                                </form>
+
+                            </div>
 
                             <div class="card-body">
                                 <h3 th:text="${workout.sessionName}" class="card-title">Light card title</h3>
+                                <hr>
                                 <p>Duration:</p>
                                 <p th:text="${workout.duration}">Duration</p>
                             </div>
 
-                            <!-- DELETE FORM -->
-                            <form class="delete-form" th:attr="data-id=${workout.idString}" onsubmit="return false;">
-                                <input type="hidden" name="id" th:value="${workout.idString}" />
-                                <button type="submit" class="delete btn btn-outline-light">Delete</button>
-                            </form>
-
 
                         </div>
-
-                        <!-- Popup overlay -->
-                        <div th:if="${workout.workouts != null}  and !${#lists.isEmpty(workout.workouts)} ">
-                            <div th:attr="id='popup-' + ${workout.idString}" class="popup-overlay hidden" style="flex-direction: column">
-
-                                <div class="popup-box " >
-
-                                </div>
-                                <button type="button" class="btn btn-danger" th:attr="onclick='hidePopup(\'' + ${workout.idString} + '\')'">Close</button>
-                            </div>
-                        </div>
-
-
-
                     </div>
                 </div>
+
+                <!-- ✅ Single global popup overlay -->
+                <div id="popup_overlay_div"></div>
+
 
 
 
@@ -101,6 +96,8 @@
 
     <script src="../js/showCardDetail.js" defer></script>
     <script src="../js/animation.js" defer></script>
+    <script src="../js/sessionShow.js" defer></script>
+
 </body>
 </html>
 

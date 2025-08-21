@@ -20,27 +20,6 @@ public class AskController {
         return "askAi";
     }
 
-//    @PostMapping("/AskAiPlan")
-//    public String handleWorkoutForm(@RequestParam Map<String, String> formData, Model model) {
-//        // Extract form fields:
-//        String goal = formData.get("goal");
-//        String experience = formData.get("experience");
-//        String workoutDays = formData.get("workout");
-//
-//        // Build your AI prompt or process data here
-//        String prompt = String.format("Create a %s day workout plan for a %s experience user with goal %s.",
-//                workoutDays, experience, goal);
-//
-//        // Call your AI service with `prompt` and get result (String)
-//        String workoutPlan = askServices.askGemini(prompt);
-//
-//        // Add workoutPlan to model for showing in Thymeleaf page
-//        model.addAttribute("workoutPlan", workoutPlan);
-//
-//        // Return a view name (e.g., show plan on a 'workoutplan' template)
-//        return workoutPlan;
-//    }
-
     // For AJAX fetch POST (JS-based dynamic fetch, e.g. from your ask.js file)
     @PostMapping(value = "/AskAiPlanAjax", produces = "text/html")
     @ResponseBody
@@ -64,7 +43,6 @@ public class AskController {
         // Remove trailing ```
         workoutPlan = workoutPlan.replaceAll("\\s*```$", "");
 
-//        System.out.println(workoutPlan);
 
         return workoutPlan; // Only the AI text, for AJAX calls via fetch
     }

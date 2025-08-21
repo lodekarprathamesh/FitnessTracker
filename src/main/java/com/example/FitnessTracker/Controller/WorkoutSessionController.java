@@ -7,8 +7,6 @@ import com.example.FitnessTracker.Repository.RegisterRepository;
 import com.example.FitnessTracker.Services.WorkoutSessionServices;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -52,7 +50,7 @@ public class WorkoutSessionController {
 
         // Group workouts by exercise name
         Map<String, List<Workout>> groupedWorkouts = workoutList.stream()
-                .collect(Collectors.groupingBy(Workout::getName));
+                .collect(Collectors.groupingBy(Workout::getExerciseName));
 
         model.addAttribute("workoutsByExercise", groupedWorkouts);
 
@@ -69,7 +67,7 @@ public class WorkoutSessionController {
 
     @PostMapping("/session/start")
     public String startSession(RedirectAttributes redirectAttributes) {
-        // Get logged-in username
+        // Get logged - in username
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
@@ -82,7 +80,6 @@ public class WorkoutSessionController {
         redirectAttributes.addAttribute("sessionId",workoutSession.getId().toString());
         return "redirect:/session";
 
-//        return "redirect:/session?sessionId=" + workoutSession.getId();
     }
 
     @PostMapping("/addWorkout")
@@ -103,7 +100,6 @@ public class WorkoutSessionController {
         redirectAttributes.addFlashAttribute("success", "Workout session added");
         redirectAttributes.addAttribute("sessionId", sessionId.toString());
         return "redirect:/session";
-//        return "redirect:/session?sessionId=" + sessionId;
     }
 
     @PostMapping("/endSession")
