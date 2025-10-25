@@ -8,11 +8,11 @@ public class WelcomeController {
 
     @GetMapping("/")
     public String homeRedirect() {
-        return "redirect:/welcome";
+        return "redirect:/welcome2";
     }
-    @GetMapping("/welcome")
+    @GetMapping("/welcome2")
     public String welcome() {
-        return "welcome";
+        return "welcome2";
     }
 
 }

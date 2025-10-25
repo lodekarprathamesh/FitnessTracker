@@ -31,7 +31,10 @@
 
 
     <div class="container">
-        <h1>💪 Dynamic Workout Logger</h1>
+        <h1 style="color: transparent !important;
+    background: linear-gradient(45deg, white, #0086d8, blue);;
+    -webkit-background-clip: text;
+    line-height: 1.3;">💪 Dynamic Workout Logger</h1>
 
             <div class="add-exercise-section">
                 <input type="text" id="newExerciseName" class="exercise-input" placeholder="Enter exercise name (e.g., Bench Press, Squats)">
@@ -53,19 +56,28 @@
         <div class="stats-container">
             <div class="stat-card">
                 <span class="stat-number" id="totalExercises">0</span>
-                <div class="stat-label">Exercises</div>
+                <div class="stat-label">
+                    <img src="../img/exer.png" style="height: 44px;">
+                    Exercises
+                </div>
             </div>
             <div class="stat-card">
                 <span class="stat-number" id="totalSets">0</span>
-                <div class="stat-label">Total Sets</div>
+                <div class="stat-label">
+                    <img src="../img/workout.png" style="height: 44px;">
+                    Total Sets</div>
             </div>
             <div class="stat-card">
                 <span class="stat-number" id="totalVolume">0</span>
-                <div class="stat-label">Total Volume</div>
+                <div class="stat-label">
+                    <img src="../img/db.png" style="height: 44px;">
+                    Total Volume</div>
             </div>
             <div class="stat-card">
                 <span class="stat-number" id="avgWeight">0</span>
-                <div class="stat-label">Avg Weight</div>
+                <div class="stat-label">
+                    <img src="../img/fitness (1).png" style="height: 44px;">
+                    Avg Weight</div>
             </div>
         </div>
     </div>
